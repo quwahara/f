@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 </head>
 <body>
-<div><?= x ?></div>
+<div><?= "x" ?></div>
 <?php
 ?>
 <form>
