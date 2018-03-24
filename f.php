@@ -10,10 +10,21 @@
 <body>
 <div><?= "x" ?></div>
 <?php
+
+
+
 ?>
 <form>
   <div>
+    <button type="button" id="checkTx">check tx</button>
+    <button type="button" id="checkTrx">check trx</button>
     <button type="button" id="btn1">btn1</button>
+  </div>
+  <div class="checkTx"><span>check tx</span><span class="apple"></span></div>
+  <div class="checkRx"><span>check rx</span><input type="text" class="apple"></div>
+  <div class="checkTrx">
+    <div><span>check trx</span><span class="banana"></span></div>
+    <div><span>check trx</span><input type="text" class="banana"></div>
   </div>
   <input type="text" class="ename">
   <table>
@@ -36,11 +47,16 @@
     var t;
     t = new Trax({
       apple: "",
+      banana: "",
       choco: [{
         milk: "",
         cacao: "",
       }],
     });
+    
+    t.tx("apple", ".checkTx > .apple");
+    t.rx("apple", ".checkRx > .apple");
+    t.trx("banana", ".checkTrx > div > .banana");
 
     t.tx("choco", "#chocoTr");
 
@@ -57,6 +73,17 @@
       item.milk = "bin: " + counter();
       t.choco.push(item);
     });
+    
+    document.querySelector("#checkTx").addEventListener("click", function (event) {
+      console.log("checkTx");
+      t.apple = "" + counter();
+    });
+
+    document.querySelector("#checkTrx").addEventListener("click", function (event) {
+      console.log("checkTrx");
+      t.banana = "" + counter();
+    });
+
     
   };
 </script>
